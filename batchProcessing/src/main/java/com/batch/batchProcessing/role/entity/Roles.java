@@ -1,4 +1,4 @@
-package com.batch.batchProcessing.student.entity;
+package com.batch.batchProcessing.role.entity;
 
 /*
  * @author Pasang Gelbu Sherpa *
@@ -9,34 +9,20 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.math.BigDecimal;
-import java.time.LocalDate;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Student {
+public class Roles {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long studentId;
+    private Long roleId;
 
-    private String degreeName;
+    private String roleName;
 
-    private LocalDate enrolledYear;
-
-    private Long duration;
-
-    private BigDecimal fee;
-
-    private String schoolOrCollegeName;
-
-    @Column(nullable = false)
-    private String status;
-
+    private String description;
 }
