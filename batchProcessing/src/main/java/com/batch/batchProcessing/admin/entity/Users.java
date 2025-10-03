@@ -5,21 +5,24 @@ package com.batch.batchProcessing.admin.entity;
  * @created 6/6/2024 at 11:28 PM
  */
 
+import com.batch.batchProcessing.common.Auditable;
 import com.batch.batchProcessing.role.entity.Roles;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Users {
+public class Users extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
@@ -33,6 +36,7 @@ public class Users {
     private String profilePic;
     private String password;
     private boolean isVerified;
+    private boolean isActive;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -41,4 +45,6 @@ public class Users {
             inverseJoinColumns = @JoinColumn(name = "roles_id")
     )
     private List<Roles> roles = new ArrayList<>();
+
+
 }
